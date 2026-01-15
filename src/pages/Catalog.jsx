@@ -42,7 +42,7 @@ const Catalog = ({ userLang }) => {
     ? `Hola, me interesa la ${collectionName}`
     : `Hello, I'm interested in the ${collectionName}`;
   
-  const whatsappUrl = `https://wa.me/50247967384?text=${encodeURIComponent(whatsappMessage)}`;
+  const whatsappUrl = `https://wa.me/50251172443?text=${encodeURIComponent(whatsappMessage)}`;
 
   const toggleFullscreen = () => {
     const container = document.querySelector('.pdf-container');

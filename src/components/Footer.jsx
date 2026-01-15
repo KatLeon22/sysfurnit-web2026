@@ -21,7 +21,7 @@ const Footer = ({ userLang }) => {
         <div className="footer-contact">
           <h4>{t.footer.contact}</h4>
           <div className="contact-item">
-            <p>Tel: <a href="tel:+50247967384">+502 4796-7384</a></p>
+            <p>Tel: <a href="tel:+50251172443">+502 5117-2443</a></p>
             <p>Email: <a href="mailto:contacto@muebleria.com">contacto@muebleria.com</a></p>
           </div>
         </div>

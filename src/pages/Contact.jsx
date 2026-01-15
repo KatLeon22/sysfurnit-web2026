@@ -89,7 +89,7 @@ const Contact = ({ userLang }) => {
   };
 
   const text = content[userLang];
-  const whatsappUrl = `https://wa.me/50247967384?text=${encodeURIComponent(userLang === 'es' ? 'Hola, me interesa conocer más sobre sus productos' : 'Hello, I am interested in learning more about your products')}`;
+  const whatsappUrl = `https://wa.me/50251172443?text=${encodeURIComponent(userLang === 'es' ? 'Hola, me interesa conocer más sobre sus productos' : 'Hello, I am interested in learning more about your products')}`;
 
   return (
     <section className="contact-section">

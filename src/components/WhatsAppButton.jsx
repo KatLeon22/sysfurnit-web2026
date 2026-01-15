@@ -15,7 +15,7 @@ const WhatsAppButton = ({ userLang = 'es', collectionId = null }) => {
   let whatsappMessage = userLang === "es" 
     ? "Hola, me interesa conocer más sobre sus productos"
     : "Hello, I'm interested in learning more about your products";
-  let whatsappUrl = `https://wa.me/50247967384?text=${encodeURIComponent(whatsappMessage)}`;
+  let whatsappUrl = `https://wa.me/50251172443?text=${encodeURIComponent(whatsappMessage)}`;
 
   if (collectionId) {
     const collection = collections.find((col) => col.id === collectionId);
@@ -24,7 +24,7 @@ const WhatsAppButton = ({ userLang = 'es', collectionId = null }) => {
       whatsappMessage = userLang === "es"
         ? `Hola, me interesa la ${collectionName}`
         : `Hello, I'm interested in the ${collectionName}`;
-      whatsappUrl = `https://wa.me/50247967384?text=${encodeURIComponent(whatsappMessage)}`;
+      whatsappUrl = `https://wa.me/50251172443?text=${encodeURIComponent(whatsappMessage)}`;
     }
   } else {
     // Si estamos en la página de catálogo, intentar extraer el ID de la URL
@@ -37,7 +37,7 @@ const WhatsAppButton = ({ userLang = 'es', collectionId = null }) => {
         whatsappMessage = userLang === "es"
           ? `Hola, me interesa la ${collectionName}`
           : `Hello, I'm interested in the ${collectionName}`;
-        whatsappUrl = `https://wa.me/50247967384?text=${encodeURIComponent(whatsappMessage)}`;
+        whatsappUrl = `https://wa.me/50251172443?text=${encodeURIComponent(whatsappMessage)}`;
       }
     }
   }
