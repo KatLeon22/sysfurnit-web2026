@@ -37,10 +37,10 @@ const Catalog = ({ userLang }) => {
 
   const collectionName = userLang === "es" ? collection.nameEs : collection.nameEn;
   
-  // Mensaje mejorado con instrucciones para adjuntar captura
+  // Mensaje simplificado
   const whatsappMessage = userLang === "es" 
-    ? `Chatea en WhatsApp con el +502 4796 7384\n\nHola, me interesa la ${collectionName}\n\n📸 Por favor, adjunta una captura de pantalla del mueble que te interesa del catálogo.`
-    : `Chat on WhatsApp with +502 4796 7384\n\nHello, I'm interested in the ${collectionName}\n\n📸 Please attach a screenshot of the furniture you're interested in from the catalog.`;
+    ? `Hola, me interesa la ${collectionName}`
+    : `Hello, I'm interested in the ${collectionName}`;
   
   const whatsappUrl = `https://wa.me/50247967384?text=${encodeURIComponent(whatsappMessage)}`;
 
@@ -125,14 +125,6 @@ const Catalog = ({ userLang }) => {
             <FaWhatsapp /> {userLang === "es" ? "Chatea en WhatsApp" : "Chat on WhatsApp"}
           </a>
           
-          {/* Instrucción para captura */}
-          <div className="whatsapp-instruction">
-            <p>
-              {userLang === "es" 
-                ? "💡 Toma una captura de pantalla del mueble que te interesa y adjúntala en WhatsApp" 
-                : "💡 Take a screenshot of the furniture you're interested in and attach it on WhatsApp"}
-            </p>
-          </div>
         </div>
       </div>
     </section>

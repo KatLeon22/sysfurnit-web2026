@@ -13,8 +13,8 @@ const WhatsAppButton = ({ userLang = 'es', collectionId = null }) => {
 
   // Determinar el mensaje según la colección actual
   let whatsappMessage = userLang === "es" 
-    ? "Chatea en WhatsApp con el +502 4796 7384\n\nHola, me interesa conocer más sobre sus productos\n\n📸 Por favor, adjunta una captura de pantalla del mueble que te interesa."
-    : "Chat on WhatsApp with +502 4796 7384\n\nHello, I'm interested in learning more about your products\n\n📸 Please attach a screenshot of the furniture you're interested in.";
+    ? "Hola, me interesa conocer más sobre sus productos"
+    : "Hello, I'm interested in learning more about your products";
   let whatsappUrl = `https://wa.me/50247967384?text=${encodeURIComponent(whatsappMessage)}`;
 
   if (collectionId) {
@@ -22,8 +22,8 @@ const WhatsAppButton = ({ userLang = 'es', collectionId = null }) => {
     if (collection) {
       const collectionName = userLang === "es" ? collection.nameEs : collection.nameEn;
       whatsappMessage = userLang === "es"
-        ? `Chatea en WhatsApp con el +502 4796 7384\n\nHola, me interesa la ${collectionName}\n\n📸 Por favor, adjunta una captura de pantalla del mueble que te interesa del catálogo.`
-        : `Chat on WhatsApp with +502 4796 7384\n\nHello, I'm interested in the ${collectionName}\n\n📸 Please attach a screenshot of the furniture you're interested in from the catalog.`;
+        ? `Hola, me interesa la ${collectionName}`
+        : `Hello, I'm interested in the ${collectionName}`;
       whatsappUrl = `https://wa.me/50247967384?text=${encodeURIComponent(whatsappMessage)}`;
     }
   } else {
@@ -35,8 +35,8 @@ const WhatsAppButton = ({ userLang = 'es', collectionId = null }) => {
       if (collection) {
         const collectionName = userLang === "es" ? collection.nameEs : collection.nameEn;
         whatsappMessage = userLang === "es"
-          ? `Chatea en WhatsApp con el +502 4796 7384\n\nHola, me interesa la ${collectionName}\n\n📸 Por favor, adjunta una captura de pantalla del mueble que te interesa del catálogo.`
-          : `Chat on WhatsApp with +502 4796 7384\n\nHello, I'm interested in the ${collectionName}\n\n📸 Please attach a screenshot of the furniture you're interested in from the catalog.`;
+          ? `Hola, me interesa la ${collectionName}`
+          : `Hello, I'm interested in the ${collectionName}`;
         whatsappUrl = `https://wa.me/50247967384?text=${encodeURIComponent(whatsappMessage)}`;
       }
     }
