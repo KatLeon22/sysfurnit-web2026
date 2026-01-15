@@ -2,11 +2,47 @@
 
 /* Barra de navegación */
 .header {
-  background: #5B4636;
+  background: linear-gradient(135deg, #5B4636 0%, #6B5544 50%, #5B4636 100%);
   color: #FFFFFF;
-  box-shadow: 0 2px 10px rgba(91, 70, 54, 0.3);
+  box-shadow: 
+    0 4px 20px rgba(91, 70, 54, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset;
   position: relative;
   z-index: 1000;
+  overflow: visible;
+}
+
+/* Patrón decorativo de fondo */
+.header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(212, 165, 116, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(212, 165, 116, 0.1) 0%, transparent 50%),
+    linear-gradient(180deg, transparent 0%, rgba(255, 255, 255, 0.03) 50%, transparent 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Línea decorativa inferior */
+.header::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    #D4A574 20%, 
+    #E8D5B7 50%, 
+    #D4A574 80%, 
+    transparent 100%);
+  z-index: 1;
 }
 
 /* Contenedor principal */
@@ -16,26 +52,35 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
+  padding: 1.5rem 2rem;
   position: relative;
+  z-index: 1;
+  overflow: visible;
 }
 
 /* Logo y texto */
 .logo-container {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 1rem;
   z-index: 1001;
 }
 
 .logo {
-  height: 3rem;
+  height: 6.5rem;
   width: auto;
+  max-width: 280px;
+  object-fit: contain;
   transition: transform 0.3s ease;
+  border-radius: 0.5rem;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 0.25rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .logo:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .company-text {
@@ -44,10 +89,11 @@
 }
 
 .company-name {
-  font-size: 1.25rem;
+  font-size: 2rem;
   font-weight: bold;
   color: #FFFFFF;
   display: block;
+  letter-spacing: 0.05em;
 }
 
 .company-tagline {
@@ -105,16 +151,41 @@
   padding: 0;
 }
 
+.menu li {
+  position: relative;
+}
+
 .menu li a {
   color: #FFFFFF;
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
   font-weight: 500;
-  padding: 0.5rem 0;
+  padding: 0.5rem 1rem;
+  border-radius: 0.5rem;
+  position: relative;
+  display: inline-block;
+}
+
+.menu li a::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #D4A574, #E8D5B7);
+  transition: width 0.3s ease;
+  border-radius: 2px;
 }
 
 .menu li a:hover {
-  color: #7A8F5A;
+  color: #D4A574;
+  background: rgba(122, 143, 90, 0.1);
+}
+
+.menu li a:hover::before {
+  width: 80%;
 }
 
 /* Selector de idioma Desktop */
@@ -125,6 +196,10 @@
   position: relative;
 }
 
+.relative {
+  position: relative;
+}
+
 .language-label {
   font-weight: 600;
   color: #FFFFFF;
@@ -132,10 +207,10 @@
 }
 
 .language-button {
-  background-color: rgba(255, 255, 255, 0.1);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
   color: #FFFFFF;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 0.375rem;
+  border-radius: 0.5rem;
   padding: 0.5rem 0.75rem;
   cursor: pointer;
   display: flex;
@@ -143,11 +218,15 @@
   gap: 0.5rem;
   transition: all 0.3s ease;
   font-size: 0.9rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(10px);
 }
 
 .language-button:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-  border-color: #7A8F5A;
+  background: linear-gradient(135deg, rgba(212, 165, 116, 0.3), rgba(212, 165, 116, 0.2));
+  border-color: #D4A574;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(212, 165, 116, 0.3);
 }
 
 .flag-icon {
@@ -160,18 +239,41 @@
 .dropdown-arrow {
   font-size: 0.8rem;
   transition: transform 0.3s ease;
+  display: inline-block;
+}
+
+.dropdown-arrow.open {
+  transform: rotate(180deg);
 }
 
 .language-dropdown {
   position: absolute;
-  top: 100%;
+  top: calc(100% + 0.5rem);
   right: 0;
-  background-color: #5B4636;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 0.375rem;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  z-index: 1000;
+  background: linear-gradient(135deg, #5B4636, #6B5544);
+  border: 1px solid rgba(212, 165, 116, 0.3);
+  border-radius: 0.5rem;
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+  z-index: 10000;
   min-width: 150px;
+  overflow: hidden;
+  animation: slideDown 0.3s ease-out;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .language-option {
@@ -180,12 +282,40 @@
   gap: 0.5rem;
   padding: 0.75rem 1rem;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
   color: #FFFFFF;
+  position: relative;
+}
+
+.language-option::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  background: linear-gradient(90deg, #D4A574, transparent);
+  transition: width 0.3s ease;
 }
 
 .language-option:hover {
-  background-color: rgba(122, 143, 90, 0.3);
+  background-color: rgba(212, 165, 116, 0.3);
+  padding-left: 1.25rem;
+}
+
+.language-option:hover::before {
+  width: 3px;
+}
+
+.language-option.active {
+  background-color: rgba(212, 165, 116, 0.2);
+}
+
+.check-mark {
+  margin-left: auto;
+  color: #D4A574;
+  font-weight: bold;
+  font-size: 1rem;
 }
 
 /* Navegación Móvil */
@@ -195,10 +325,13 @@
   top: 100%;
   left: 0;
   right: 0;
-  background-color: #5B4636;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  background: linear-gradient(180deg, #5B4636 0%, #6B5544 100%);
+  border-top: 2px solid rgba(122, 143, 90, 0.3);
+  box-shadow: 
+    0 8px 24px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.05) inset;
   z-index: 999;
+  animation: slideDown 0.3s ease-out;
 }
 
 .mobile-nav.open {
@@ -224,13 +357,30 @@
   color: #FFFFFF;
   text-decoration: none;
   padding: 1rem 2rem;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
   font-weight: 500;
+  position: relative;
+}
+
+.mobile-menu li a::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 0;
+  background: linear-gradient(90deg, #D4A574, transparent);
+  transition: width 0.3s ease;
 }
 
 .mobile-menu li a:hover {
-  background-color: rgba(122, 143, 90, 0.3);
-  color: #7A8F5A;
+  background-color: rgba(212, 165, 116, 0.2);
+  color: #D4A574;
+  padding-left: 2.5rem;
+}
+
+.mobile-menu li a:hover::before {
+  width: 4px;
 }
 
 /* Selector de idioma Móvil */
@@ -274,7 +424,7 @@
 
 .language-option-mobile.active {
   background-color: #7A8F5A;
-  border-color: #7A8F5A;
+  border-color: #D4A574;
 }
 
 /* Responsive Design */
@@ -300,11 +450,12 @@
   }
   
   .company-name {
-    font-size: 1.1rem;
+    font-size: 1.5rem;
   }
   
   .logo {
-    height: 2.5rem;
+    height: 5rem;
+    max-width: 220px;
     flex-shrink: 0;
   }
   
@@ -325,7 +476,7 @@
   }
   
   .company-name {
-    font-size: 0.9rem;
+    font-size: 1.2rem;
     line-height: 1.2;
   }
   
@@ -334,7 +485,8 @@
   }
   
   .logo {
-    height: 2rem;
+    height: 4rem;
+    max-width: 180px;
     flex-shrink: 0;
   }
   

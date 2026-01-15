@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
 import '../src/styles/App.css';
 import Home from './pages/Home';
+import Collections from './pages/Collections';
 import WhatsAppButton from './components/WhatsAppButton';
 import Footer from './components/Footer';
 import Catalog from './pages/Catalog';
@@ -41,6 +42,7 @@ function App() {
         {/* Contenido principal según la ruta */}
         <Routes>
           <Route path="/" element={<Home userLang={userLang} />} />
+          <Route path="/collections" element={<Collections userLang={userLang} />} />
           <Route path="/catalog/:collectionId" element={<Catalog userLang={userLang} />} />
           <Route path="/contact" element={<Contact userLang={userLang} />} />
         </Routes>
