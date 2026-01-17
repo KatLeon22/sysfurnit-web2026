@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Header from './components/Header';
-import '../src/styles/App.css';
+import './styles/App.css';
 import Home from './pages/Home';
 import Collections from './pages/Collections';
 import WhatsAppButton from './components/WhatsAppButton';
