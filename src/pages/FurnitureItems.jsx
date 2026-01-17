@@ -46,9 +46,17 @@ const FurnitureItems = ({ userLang }) => {
       ? `${window.location.origin}${item.images[currentImageIndex] || item.images[0]}`
       : '';
     
+    // URL de la página del producto
+    const productPageUrl = `${window.location.origin}/collection/${collectionId}/${subcategoryId}`;
+    
     let message = userLang === "es"
       ? `Hola, me interesa el mueble:\n\n*${item.name}*\n\nCategoría: ${subcategoryName}\nColección: ${collectionName}`
       : `Hello, I'm interested in the furniture:\n\n*${item.name}*\n\nCategory: ${subcategoryName}\nCollection: ${collectionName}`;
+    
+    // Agregar link a la página del producto
+    message += userLang === "es" 
+      ? `\n\nVer producto: ${productPageUrl}`
+      : `\n\nView product: ${productPageUrl}`;
     
     if (imageUrl) {
       message += userLang === "es" 

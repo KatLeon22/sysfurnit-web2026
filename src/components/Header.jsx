@@ -34,13 +34,19 @@ const Header = ({ lang, setLang }) => {
       }
     };
 
+    // Usar 'click' en lugar de 'mousedown' para mejor control
     if (open || collectionsOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
+      const timeoutId = setTimeout(() => {
+        document.addEventListener('click', handleClickOutside, true);
+        document.addEventListener('touchend', handleClickOutside, true);
+      }, 50);
+      
+      return () => {
+        clearTimeout(timeoutId);
+        document.removeEventListener('click', handleClickOutside, true);
+        document.removeEventListener('touchend', handleClickOutside, true);
+      };
     }
-
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
   }, [open, collectionsOpen]);
 
   const handleSelect = (code) => {
@@ -86,13 +92,12 @@ const Header = ({ lang, setLang }) => {
             <li 
               className="collections-menu-item"
               ref={collectionsDropdownRef}
-              onMouseEnter={() => setCollectionsOpen(true)}
-              onMouseLeave={() => setCollectionsOpen(false)}
             >
               <Link 
                 to="/collections"
                 onClick={(e) => {
                   e.preventDefault();
+                  e.stopPropagation();
                   setCollectionsOpen(!collectionsOpen);
                 }}
               >
@@ -100,7 +105,12 @@ const Header = ({ lang, setLang }) => {
                 <span className={`dropdown-arrow ${collectionsOpen ? 'open' : ''}`}>&#9662;</span>
               </Link>
               {collectionsOpen && (
-                <div className="collections-dropdown" style={{ backgroundColor: '#FFFFFF' }}>
+                <div 
+                  className="collections-dropdown" 
+                  style={{ backgroundColor: '#FFFFFF' }}
+                  onClick={(e) => e.stopPropagation()}
+                  onMouseDown={(e) => e.stopPropagation()}
+                >
                   {collections.map((collection) => {
                     const hasSubcategories = collection.subcategories && collection.subcategories.length > 0;
                     const collectionName = lang === "es" ? collection.nameEs : collection.nameEn;
@@ -110,7 +120,10 @@ const Header = ({ lang, setLang }) => {
                         key={collection.id}
                         to={hasSubcategories ? `/collection/${collection.id}` : "/collections"}
                         className="collection-dropdown-item"
-                        onClick={() => setCollectionsOpen(false)}
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setCollectionsOpen(false);
+                        }}
                         style={{
                           color: '#000000',
                           WebkitTextFillColor: '#000000',
@@ -191,6 +204,7 @@ const Header = ({ lang, setLang }) => {
                 to="/collections" 
                 onClick={(e) => {
                   e.preventDefault();
+                  e.stopPropagation();
                   setCollectionsOpen(!collectionsOpen);
                 }}
               >
@@ -198,7 +212,10 @@ const Header = ({ lang, setLang }) => {
                 <span className={`dropdown-arrow ${collectionsOpen ? 'open' : ''}`}>&#9662;</span>
               </Link>
               {collectionsOpen && (
-                <div className="mobile-collections-dropdown">
+                <div 
+                  className="mobile-collections-dropdown"
+                  onClick={(e) => e.stopPropagation()}
+                >
                   {collections.map((collection) => {
                     const hasSubcategories = collection.subcategories && collection.subcategories.length > 0;
                     const collectionName = lang === "es" ? collection.nameEs : collection.nameEn;
@@ -208,7 +225,8 @@ const Header = ({ lang, setLang }) => {
                         key={collection.id}
                         to={hasSubcategories ? `/collection/${collection.id}` : "/collections"}
                         className="mobile-collection-item"
-                        onClick={() => {
+                        onClick={(e) => {
+                          e.stopPropagation();
                           setCollectionsOpen(false);
                           setMobileMenuOpen(false);
                         }}
