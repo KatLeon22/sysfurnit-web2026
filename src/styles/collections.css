@@ -1,142 +1,114 @@
-/* collections.css - Estilos para la página de Colecciones */
+/* collections.css - Estilos profesionales estilo Homelegance */
 
 /* Sección principal */
 .collections-section {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
-  padding: 2rem 1rem;
-  color: #2E2E2E;
-  font-family: 'Inter', sans-serif;
-  background: #F5F1EB;
+  padding: 3rem 2rem;
+  color: #333333;
+  font-family: 'Arial', 'Helvetica', sans-serif;
+  background: #FFFFFF;
   min-height: calc(100vh - 200px);
   position: relative;
 }
 
-/* Patrón de fondo sutil */
-.collections-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: 
-    radial-gradient(circle at 20% 50%, rgba(122, 143, 90, 0.03) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(91, 70, 54, 0.03) 0%, transparent 50%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-.collections-section > * {
-  position: relative;
-  z-index: 1;
-}
+/* Sin fondo decorativo - diseño limpio */
 
 /* Encabezado de colecciones */
 .collections-header {
   text-align: center;
   margin-bottom: 3rem;
   padding: 2rem 0;
+  border-bottom: 2px solid #E0E0E0;
 }
 
 .collections-header h1 {
-  font-size: 2.8rem;
-  font-weight: 600;
-  color: #5B4636;
-  margin-bottom: 1rem;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .collections-header p {
-  font-size: 1.2rem;
-  color: #6B5544;
-  max-width: 600px;
+  font-size: 1.1rem;
+  color: #666666;
+  max-width: 700px;
   margin: 0 auto;
 }
 
-/* Grid de Colecciones */
+/* Grid de Colecciones - Estilo Homelegance */
 .collections-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2.5rem;
+  margin-top: 3rem;
   padding: 1rem 0;
 }
 
 .collection-card {
   background: #FFFFFF;
-  padding: 2rem 1.5rem;
-  border-radius: 1.25rem;
-  box-shadow: 0 4px 15px rgba(91, 70, 54, 0.1);
+  padding: 0;
+  border-radius: 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
   cursor: pointer;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
-  border: 1px solid rgba(91, 70, 54, 0.1);
+  border: 1px solid #E0E0E0;
   position: relative;
   overflow: hidden;
 }
 
-.collection-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(90deg, #7A8F5A, #8FA66B);
-  transform: scaleX(0);
-  transition: transform 0.3s ease;
-}
-
-.collection-card:hover::before {
-  transform: scaleX(1);
-}
-
 .collection-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 30px rgba(91, 70, 54, 0.15);
-  border-color: #7A8F5A;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  border-color: #CCCCCC;
+  transform: translateY(-4px);
 }
 
 .collection-icon {
-  color: #5B4636;
-  margin-bottom: 1rem;
-  transition: transform 0.3s ease, color 0.3s ease;
+  color: #666666;
+  margin: 1.5rem 0 1rem 0;
+  transition: color 0.3s ease;
 }
 
 .collection-card:hover .collection-icon {
-  transform: scale(1.2);
-  color: #7A8F5A;
+  color: #333333;
 }
 
 .collection-name {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 600;
-  color: #5B4636;
-  margin-bottom: 1rem;
+  color: #1a1a1a;
+  margin-bottom: 1.5rem;
   line-height: 1.4;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0 1rem;
 }
 
 .collection-btn {
-  background: linear-gradient(135deg, #7A8F5A, #8FA66B);
+  background: #1a1a1a;
   color: white;
-  padding: 0.75rem 1.5rem;
+  padding: 0.75rem 2rem;
   border: none;
-  border-radius: 0.75rem;
-  font-weight: 500;
-  font-size: 1rem;
+  border-radius: 0;
+  font-weight: 600;
+  font-size: 0.9rem;
   cursor: pointer;
   transition: all 0.3s ease;
   margin-top: auto;
-  box-shadow: 0 4px 10px rgba(122, 143, 90, 0.3);
+  width: 100%;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .collection-btn:hover {
-  background: linear-gradient(135deg, #8FA66B, #7A8F5A);
-  transform: scale(1.05);
-  box-shadow: 0 6px 20px rgba(122, 143, 90, 0.4);
+  background: #333333;
+  color: #FFFFFF;
 }
 
 /* Responsive */
@@ -215,5 +187,67 @@
 
   .collection-icon {
     font-size: 28px !important;
+  }
+}
+
+/* Estilos para el dropdown de subcategorías */
+.collection-card-wrapper {
+  position: relative;
+}
+
+.subcategories-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #FFFFFF;
+  border: 1px solid #E0E0E0;
+  border-top: none;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+  max-height: 400px;
+  overflow-y: auto;
+  margin-top: -1px;
+}
+
+.subcategory-item {
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  border-bottom: 1px solid #F0F0F0;
+  transition: all 0.2s ease;
+  font-size: 0.95rem;
+  color: #333333;
+  text-align: left;
+}
+
+.subcategory-item:hover {
+  background: #F8F8F8;
+  color: #1a1a1a;
+  padding-left: 2rem;
+}
+
+.subcategory-item:last-child {
+  border-bottom: none;
+}
+
+.collection-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.collection-btn svg {
+  font-size: 0.8rem;
+}
+
+@media (max-width: 768px) {
+  .subcategories-dropdown {
+    max-height: 300px;
+  }
+
+  .subcategory-item {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
   }
 }

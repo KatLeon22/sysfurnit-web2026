@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import logo from "../assets/FurniLogo.jpg";
+import logo from "../assets/1.jpeg";
 import "../styles/header.css";
 import { Link } from "react-router-dom";
 import flagEs from "../assets/guatemala.png";

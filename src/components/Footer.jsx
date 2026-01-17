@@ -3,7 +3,7 @@ import React from "react";
 import "../styles/footer.css"; // Estilos específicos del footer
 import { Link } from "react-router-dom";
 import { translations } from '../utils/translations';
-import logo from "../assets/FurniLogo.jpg";
+import logo from "../assets/1.jpeg";
 
 const Footer = ({ userLang }) => {
   const t = translations[userLang];

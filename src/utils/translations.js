@@ -93,62 +93,65 @@ export const collections = [
   {
     id: "bedroom",
     nameEs: "Bedroom Collection",
-    nameEn: "Bedroom Collection",
-    pdfPath: "/catalogs/Bedroom.pdf",
+    nameEn: "Bedroom Collection"
   },
   {
     id: "supplement",
     nameEs: "Supplement",
-    nameEn: "Supplement",
-    pdfPath: "/catalogs/Supplement.pdf",
+    nameEn: "Supplement"
   },
   {
     id: "dining",
     nameEs: "Dining Collection",
-    nameEn: "Dining Collection",
-    pdfPath: "/catalogs/DiningRoom.pdf",
+    nameEn: "Dining Collection"
   },
   {
     id: "seating-stationary",
     nameEs: "Seating – Stationary Collection",
-    nameEn: "Seating – Stationary Collection",
-    pdfPath: "/catalogs/StationarySeating.pdf",
+    nameEn: "Seating – Stationary Collection"
   },
   {
     id: "dining-room",
     nameEs: "Dining Room",
-    nameEn: "Dining Room",
-    pdfPath: "/catalogs/DiningRoom.pdf",
+    nameEn: "Dining Room"
   },
   {
     id: "motion-seating",
     nameEs: "Motion Seating",
-    nameEn: "Motion Seating",
-    pdfPath: "/catalogs/MotionSeating.pdf",
+    nameEn: "Motion Seating"
   },
   {
     id: "youth",
     nameEs: "Youth",
-    nameEn: "Youth",
-    pdfPath: "/catalogs/Youth.pdf",
+    nameEn: "Youth"
   },
   {
     id: "home",
     nameEs: "Home",
-    nameEn: "Home",
-    pdfPath: "/catalogs/Home.pdf",
+    nameEn: "Home"
   },
   {
     id: "occasional",
     nameEs: "Occasional",
-    nameEn: "Occasional",
-    pdfPath: "/catalogs/Occasional.pdf",
+    nameEn: "Occasional"
   },
   {
     id: "mattress",
     nameEs: "Mattress",
-    nameEn: "Mattress",
-    pdfPath: "/catalogs/Mattress.pdf",
+    nameEn: "Mattress"
   },
 ];
+
+
+// Función helper para obtener una colección por ID
+export const getCollectionById = (collectionId) => {
+  return collections.find(col => col.id === collectionId);
+};
+
+// Función helper para obtener una subcategoría por ID
+export const getSubcategoryById = (collectionId, subcategoryId) => {
+  const collection = getCollectionById(collectionId);
+  if (!collection || !collection.subcategories) return null;
+  return collection.subcategories.find(sub => sub.id === subcategoryId);
+};
 

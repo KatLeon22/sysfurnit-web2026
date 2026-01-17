@@ -1,0 +1,142 @@
+/* subcategories.css - Estilos para página de subcategorías */
+
+.subcategories-section {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
+  color: #333333;
+  font-family: 'Arial', 'Helvetica', sans-serif;
+  background: #FFFFFF;
+  min-height: calc(100vh - 200px);
+}
+
+.subcategories-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  padding: 2rem 0;
+  border-bottom: 2px solid #E0E0E0;
+}
+
+.subcategories-header .back-btn {
+  background: #1a1a1a;
+  color: #FFFFFF;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+.subcategories-header .back-btn:hover {
+  background: #333333;
+}
+
+.subcategories-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.subcategories-header p {
+  font-size: 1.1rem;
+  color: #666666;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.subcategories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+.subcategory-card {
+  background: #FFFFFF;
+  padding: 2rem 1.5rem;
+  border: 1px solid #E0E0E0;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 150px;
+}
+
+.subcategory-card:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  border-color: #CCCCCC;
+  transform: translateY(-4px);
+}
+
+.subcategory-name {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.subcategory-btn {
+  background: #1a1a1a;
+  color: white;
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 0;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: auto;
+}
+
+.subcategory-btn:hover {
+  background: #333333;
+  color: #FFFFFF;
+}
+
+.error-message {
+  text-align: center;
+  padding: 3rem;
+}
+
+.error-message h2 {
+  color: #1a1a1a;
+  margin-bottom: 1.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .subcategories-section {
+    padding: 2rem 1rem;
+  }
+
+  .subcategories-header h1 {
+    font-size: 2rem;
+  }
+
+  .subcategories-grid {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .subcategories-grid {
+    grid-template-columns: 1fr;
+  }
+}

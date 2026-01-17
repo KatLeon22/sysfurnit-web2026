@@ -7,6 +7,8 @@ import WhatsAppButton from './components/WhatsAppButton';
 import Footer from './components/Footer';
 import Catalog from './pages/Catalog';
 import Contact from './pages/Contact';
+import Subcategories from './pages/Subcategories';
+import FurnitureItems from './pages/FurnitureItems';
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 import { trackPageView } from './utils/analytics';
 
@@ -46,6 +48,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home userLang={userLang} />} />
           <Route path="/collections" element={<Collections userLang={userLang} />} />
+          <Route path="/collection/:collectionId" element={<Subcategories userLang={userLang} />} />
+          <Route path="/collection/:collectionId/:subcategoryId" element={<FurnitureItems userLang={userLang} />} />
           <Route path="/catalog/:collectionId" element={<Catalog userLang={userLang} />} />
           <Route path="/contact" element={<Contact userLang={userLang} />} />
         </Routes>
