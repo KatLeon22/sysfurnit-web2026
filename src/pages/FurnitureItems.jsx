@@ -40,10 +40,32 @@ const FurnitureItems = ({ userLang }) => {
   const collectionName = userLang === "es" ? collection.nameEs : collection.nameEn;
   const items = subcategory.items || [];
 
-  const handleWhatsAppClick = (itemName) => {
-    const message = userLang === "es"
-      ? `Hola, me interesa el mueble: ${itemName} de la categoría ${subcategoryName}`
-      : `Hello, I'm interested in the furniture: ${itemName} from the category ${subcategoryName}`;
+  const handleWhatsAppClick = (item, itemIndex) => {
+    const currentImageIndex = getImageIndex(itemIndex);
+    const imageUrl = item.images && item.images.length > 0 
+      ? `${window.location.origin}${item.images[currentImageIndex] || item.images[0]}`
+      : '';
+    
+    let message = userLang === "es"
+      ? `Hola, me interesa el mueble:\n\n*${item.name}*\n\nCategoría: ${subcategoryName}\nColección: ${collectionName}`
+      : `Hello, I'm interested in the furniture:\n\n*${item.name}*\n\nCategory: ${subcategoryName}\nCollection: ${collectionName}`;
+    
+    if (imageUrl) {
+      message += userLang === "es" 
+        ? `\n\nImagen: ${imageUrl}`
+        : `\n\nImage: ${imageUrl}`;
+    }
+    
+    if (item.characteristics && item.characteristics.length > 0) {
+      message += userLang === "es" ? `\n\nCaracterísticas:` : `\n\nCharacteristics:`;
+      item.characteristics.forEach(char => {
+        const charText = typeof char === 'string' 
+          ? char 
+          : (userLang === "es" ? char.nameEs : char.nameEn);
+        message += `\n• ${charText}`;
+      });
+    }
+    
     const whatsappUrl = `https://wa.me/50251172443?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
   };
@@ -67,7 +89,7 @@ const FurnitureItems = ({ userLang }) => {
           {items.map((item, index) => {
             const currentImageIndex = getImageIndex(index);
             return (
-            <div key={index} className="furniture-item-card">
+            <div key={index} className="furniture-item-card" data-item-index={index}>
               <div className="furniture-item-images">
                 {item.images && item.images.length > 0 ? (
                   <>
@@ -105,18 +127,25 @@ const FurnitureItems = ({ userLang }) => {
                   <div className="furniture-item-characteristics">
                     <h4>{userLang === "es" ? "Características:" : "Characteristics:"}</h4>
                     <ul>
-                      {item.characteristics.map((char, charIndex) => (
-                        <li key={charIndex}>{char}</li>
-                      ))}
+                      {item.characteristics.map((char, charIndex) => {
+                        const charText = typeof char === 'string' 
+                          ? char 
+                          : (userLang === "es" ? char.nameEs : char.nameEn);
+                        return (
+                          <li key={charIndex}>{charText}</li>
+                        );
+                      })}
                     </ul>
                   </div>
                 )}
-                <button 
-                  className="whatsapp-btn"
-                  onClick={() => handleWhatsAppClick(item.name)}
-                >
-                  <FaWhatsapp /> {userLang === "es" ? "Consultar por WhatsApp" : "Inquire via WhatsApp"}
-                </button>
+                <div className="furniture-item-buttons">
+                  <button 
+                    className="whatsapp-btn"
+                    onClick={() => handleWhatsAppClick(item, index)}
+                  >
+                    <FaWhatsapp /> {userLang === "es" ? "Consultar por WhatsApp" : "Inquire via WhatsApp"}
+                  </button>
+                </div>
               </div>
             </div>
           );

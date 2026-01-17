@@ -88,60 +88,208 @@ export const translations = {
   },
 };
 
-// Configuración de colecciones
+// Configuración de colecciones con subcategorías y muebles
 export const collections = [
   {
+    id: "new-arrivals",
+    nameEs: "New Arrivals",
+    nameEn: "New Arrivals",
+    subcategories: [
+      {
+        id: "youth-nora-collection",
+        nameEs: "Youth-Nora Collection",
+        nameEn: "Youth-Nora Collection",
+        items: [
+          {
+            name: "B2083BUBC Youth-Nora Collection",
+            characteristics: [
+              {
+                nameEs: "Modelo: B2083BUBC",
+                nameEn: "Model: B2083BUBC"
+              },
+              {
+                nameEs: "Colección: Youth-Nora",
+                nameEn: "Collection: Youth-Nora"
+              },
+              {
+                nameEs: "Diseño moderno y elegante",
+                nameEn: "Modern and elegant design"
+              }
+            ],
+            images: [
+              "/catalogs/New Arrivals/B2083BUBC Youth-Nora Collection/1.jpeg",
+              "/catalogs/New Arrivals/B2083BUBC Youth-Nora Collection/2.jpeg",
+              "/catalogs/New Arrivals/B2083BUBC Youth-Nora Collection/2.jpeg" // Segunda imagen como tercera
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
     id: "bedroom",
-    nameEs: "Bedroom Collection",
-    nameEn: "Bedroom Collection"
+    nameEs: "Bedroom",
+    nameEn: "Bedroom",
+    subcategories: [
+      {
+        id: "headboards",
+        nameEs: "Headboards",
+        nameEn: "Headboards",
+        items: [] // Se llenará con muebles individuales
+      },
+      {
+        id: "king-beds",
+        nameEs: "King Beds",
+        nameEn: "King Beds",
+        items: []
+      },
+      {
+        id: "queen-beds",
+        nameEs: "Queen Beds",
+        nameEn: "Queen Beds",
+        items: []
+      },
+      {
+        id: "full-beds",
+        nameEs: "Full Beds",
+        nameEn: "Full Beds",
+        items: []
+      },
+      {
+        id: "twin-beds",
+        nameEs: "Twin Beds",
+        nameEn: "Twin Beds",
+        items: []
+      },
+      {
+        id: "dressers",
+        nameEs: "Dressers",
+        nameEn: "Dressers",
+        items: []
+      },
+      {
+        id: "dressers-mirrors",
+        nameEs: "Dressers Mirrors",
+        nameEn: "Dressers Mirrors",
+        items: []
+      },
+      {
+        id: "night-stands",
+        nameEs: "Night Stands",
+        nameEn: "Night Stands",
+        items: []
+      },
+      {
+        id: "chests",
+        nameEs: "Chests",
+        nameEn: "Chests",
+        items: []
+      },
+      {
+        id: "media-chests",
+        nameEs: "Media Chests",
+        nameEn: "Media Chests",
+        items: []
+      },
+      {
+        id: "vanity-dressers-mirrors",
+        nameEs: "Vanity Dressers & Mirrors",
+        nameEn: "Vanity Dressers & Mirrors",
+        items: []
+      },
+      {
+        id: "stools-benches",
+        nameEs: "Stools & Benches",
+        nameEn: "Stools & Benches",
+        items: []
+      },
+      {
+        id: "browse-all-bedroom",
+        nameEs: "Browse All Bedroom",
+        nameEn: "Browse All Bedroom",
+        items: []
+      }
+    ]
   },
   {
     id: "supplement",
     nameEs: "Supplement",
-    nameEn: "Supplement"
+    nameEn: "Supplement",
+    subcategories: []
   },
   {
     id: "dining",
-    nameEs: "Dining Collection",
-    nameEn: "Dining Collection"
+    nameEs: "Dining",
+    nameEn: "Dining",
+    subcategories: []
   },
   {
-    id: "seating-stationary",
-    nameEs: "Seating – Stationary Collection",
-    nameEn: "Seating – Stationary Collection"
+    id: "seating",
+    nameEs: "Seating",
+    nameEn: "Seating",
+    subcategories: []
   },
   {
     id: "dining-room",
     nameEs: "Dining Room",
-    nameEn: "Dining Room"
+    nameEn: "Dining Room",
+    subcategories: []
   },
   {
     id: "motion-seating",
     nameEs: "Motion Seating",
-    nameEn: "Motion Seating"
+    nameEn: "Motion Seating",
+    subcategories: []
   },
   {
     id: "youth",
     nameEs: "Youth",
-    nameEn: "Youth"
+    nameEn: "Youth",
+    subcategories: []
   },
   {
     id: "home",
     nameEs: "Home",
-    nameEn: "Home"
+    nameEn: "Home",
+    subcategories: []
   },
   {
     id: "occasional",
     nameEs: "Occasional",
-    nameEn: "Occasional"
+    nameEn: "Occasional",
+    subcategories: []
+  },
+  {
+    id: "office",
+    nameEs: "Office",
+    nameEn: "Office",
+    subcategories: []
+  },
+  {
+    id: "accent",
+    nameEs: "Accent",
+    nameEn: "Accent",
+    subcategories: []
+  },
+  {
+    id: "media",
+    nameEs: "Media",
+    nameEn: "Media",
+    subcategories: []
+  },
+  {
+    id: "lighting",
+    nameEs: "Lighting",
+    nameEn: "Lighting",
+    subcategories: []
   },
   {
     id: "mattress",
     nameEs: "Mattress",
-    nameEn: "Mattress"
+    nameEn: "Mattress",
+    subcategories: []
   },
 ];
-
 
 // Función helper para obtener una colección por ID
 export const getCollectionById = (collectionId) => {
@@ -154,4 +302,3 @@ export const getSubcategoryById = (collectionId, subcategoryId) => {
   if (!collection || !collection.subcategories) return null;
   return collection.subcategories.find(sub => sub.id === subcategoryId);
 };
-
