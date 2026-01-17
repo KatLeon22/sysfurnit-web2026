@@ -9,7 +9,7 @@ const Subcategories = ({ userLang }) => {
   const navigate = useNavigate();
   const collection = getCollectionById(collectionId);
 
-  if (!collection || !collection.subcategories || collection.subcategories.length === 0) {
+  if (!collection) {
     return (
       <section className="subcategories-section">
         <div className="error-message">
@@ -23,6 +23,23 @@ const Subcategories = ({ userLang }) => {
   }
 
   const collectionName = userLang === "es" ? collection.nameEs : collection.nameEn;
+
+  // Si la colección no tiene subcategorías, mostrar mensaje
+  if (!collection.subcategories || collection.subcategories.length === 0) {
+    return (
+      <section className="subcategories-section">
+        <div className="subcategories-header">
+          <button onClick={() => navigate("/collections")} className="back-btn">
+            <FaChevronLeft /> {userLang === "es" ? "Volver a Colecciones" : "Back to Collections"}
+          </button>
+          <h1>{collectionName}</h1>
+        </div>
+        <div className="error-message">
+          <p>{userLang === "es" ? "Esta colección aún no tiene categorías disponibles." : "This collection doesn't have categories available yet."}</p>
+        </div>
+      </section>
+    );
+  }
 
   const handleSubcategoryClick = (subcategoryId) => {
     navigate(`/collection/${collectionId}/${subcategoryId}`);

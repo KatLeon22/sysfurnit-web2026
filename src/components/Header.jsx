@@ -5,12 +5,14 @@ import { Link } from "react-router-dom";
 import flagEs from "../assets/guatemala.png";
 import flagEn from "../assets/usa.png";
 import { trackLanguageChange } from '../utils/analytics';
-import { translations } from '../utils/translations';
+import { translations, collections } from '../utils/translations';
 
 const Header = ({ lang, setLang }) => {
-  const [open, setOpen] = useState(false); // Estado para abrir/cerrar dropdown
+  const [open, setOpen] = useState(false); // Estado para abrir/cerrar dropdown de idioma
+  const [collectionsOpen, setCollectionsOpen] = useState(false); // Estado para abrir/cerrar dropdown de colecciones
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false); // Estado para menú móvil
   const dropdownRef = useRef(null);
+  const collectionsDropdownRef = useRef(null);
   const t = translations[lang];
 
   // Idiomas disponibles - siempre mostrar todos
@@ -21,22 +23,25 @@ const Header = ({ lang, setLang }) => {
 
   const currentLang = languages.find((l) => l.code === lang) || languages[0];
 
-  // Cerrar dropdown al hacer click fuera
+  // Cerrar dropdowns al hacer click fuera
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
         setOpen(false);
       }
+      if (collectionsDropdownRef.current && !collectionsDropdownRef.current.contains(event.target)) {
+        setCollectionsOpen(false);
+      }
     };
 
-    if (open) {
+    if (open || collectionsOpen) {
       document.addEventListener('mousedown', handleClickOutside);
     }
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
-  }, [open]);
+  }, [open, collectionsOpen]);
 
   const handleSelect = (code) => {
     if (code !== lang) {
@@ -78,7 +83,61 @@ const Header = ({ lang, setLang }) => {
         <nav className="desktop-nav">
           <ul className="menu">
             <li><Link to="/">{t.nav.home}</Link></li>
-            <li><Link to="/collections">{t.nav.collections}</Link></li>
+            <li 
+              className="collections-menu-item"
+              ref={collectionsDropdownRef}
+              onMouseEnter={() => setCollectionsOpen(true)}
+              onMouseLeave={() => setCollectionsOpen(false)}
+            >
+              <Link 
+                to="/collections"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setCollectionsOpen(!collectionsOpen);
+                }}
+              >
+                {t.nav.collections}
+                <span className={`dropdown-arrow ${collectionsOpen ? 'open' : ''}`}>&#9662;</span>
+              </Link>
+              {collectionsOpen && (
+                <div className="collections-dropdown" style={{ backgroundColor: '#FFFFFF' }}>
+                  {collections.map((collection) => {
+                    const hasSubcategories = collection.subcategories && collection.subcategories.length > 0;
+                    const collectionName = lang === "es" ? collection.nameEs : collection.nameEn;
+                    
+                    return (
+                      <Link
+                        key={collection.id}
+                        to={hasSubcategories ? `/collection/${collection.id}` : "/collections"}
+                        className="collection-dropdown-item"
+                        onClick={() => setCollectionsOpen(false)}
+                        style={{
+                          color: '#000000',
+                          WebkitTextFillColor: '#000000',
+                          backgroundColor: '#FFFFFF',
+                          display: 'block',
+                          padding: '0.75rem 1rem',
+                          textDecoration: 'none',
+                          borderBottom: '1px solid #F0F0F0',
+                          fontSize: '0.9rem',
+                          fontWeight: '600'
+                        }}
+                        onMouseEnter={(e) => {
+                          e.target.style.backgroundColor = '#F5F5F5';
+                          e.target.style.color = '#000000';
+                        }}
+                        onMouseLeave={(e) => {
+                          e.target.style.backgroundColor = '#FFFFFF';
+                          e.target.style.color = '#000000';
+                        }}
+                      >
+                        {collectionName}
+                      </Link>
+                    );
+                  })}
+                </div>
+              )}
+            </li>
             <li><Link to="/contact">{t.nav.contact}</Link></li>
           </ul>
 
@@ -127,7 +186,45 @@ const Header = ({ lang, setLang }) => {
         <nav className={`mobile-nav ${mobileMenuOpen ? 'open' : ''}`}>
           <ul className="mobile-menu">
             <li><Link to="/" onClick={() => setMobileMenuOpen(false)}>{t.nav.home}</Link></li>
-            <li><Link to="/collections" onClick={() => setMobileMenuOpen(false)}>{t.nav.collections}</Link></li>
+            <li className="mobile-collections-item">
+              <Link 
+                to="/collections" 
+                onClick={(e) => {
+                  e.preventDefault();
+                  setCollectionsOpen(!collectionsOpen);
+                }}
+              >
+                {t.nav.collections}
+                <span className={`dropdown-arrow ${collectionsOpen ? 'open' : ''}`}>&#9662;</span>
+              </Link>
+              {collectionsOpen && (
+                <div className="mobile-collections-dropdown">
+                  {collections.map((collection) => {
+                    const hasSubcategories = collection.subcategories && collection.subcategories.length > 0;
+                    const collectionName = lang === "es" ? collection.nameEs : collection.nameEn;
+                    
+                    return (
+                      <Link
+                        key={collection.id}
+                        to={hasSubcategories ? `/collection/${collection.id}` : "/collections"}
+                        className="mobile-collection-item"
+                        onClick={() => {
+                          setCollectionsOpen(false);
+                          setMobileMenuOpen(false);
+                        }}
+                        style={{
+                          color: '#FFFFFF',
+                          display: 'block',
+                          textDecoration: 'none'
+                        }}
+                      >
+                        {collectionName}
+                      </Link>
+                    );
+                  })}
+                </div>
+              )}
+            </li>
             <li><Link to="/contact" onClick={() => setMobileMenuOpen(false)}>{t.nav.contact}</Link></li>
           </ul>
 
