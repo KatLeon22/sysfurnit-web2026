@@ -1,10 +1,11 @@
 .footer {
   width: 100%;
-  background: #5B4636;
+  background: #1a1a1a;
   color: #FFFFFF;
-  padding: 1.5rem 1rem;
+  padding: 2.5rem 1rem;
   box-sizing: border-box;
   margin-top: auto;
+  border-top: 3px solid #333333;
 }
 
 .footer-container {
@@ -56,10 +57,12 @@
 }
 
 .footer-contact h4 {
-  margin-bottom: 0.5rem;
-  font-size: 0.95rem;
-  color: #7A8F5A;
-  font-weight: 600;
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+  color: #FFFFFF;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .contact-item {
@@ -73,13 +76,13 @@
 }
 
 .footer-contact a {
-  color: #7A8F5A;
+  color: #CCCCCC;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .footer-contact a:hover {
-  color: #8FA66B;
+  color: #FFFFFF;
   text-decoration: underline;
 }
 
@@ -91,10 +94,12 @@
 }
 
 .footer-links h4 {
-  margin-bottom: 0.5rem;
-  font-size: 0.95rem;
-  color: #7A8F5A;
-  font-weight: 600;
+  margin-bottom: 0.75rem;
+  font-size: 1rem;
+  color: #FFFFFF;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .footer-links ul {
@@ -112,13 +117,13 @@
 }
 
 .footer-links a {
-  color: #7A8F5A;
+  color: #CCCCCC;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .footer-links a:hover {
-  color: #8FA66B;
+  color: #FFFFFF;
   text-decoration: underline;
 }
 

@@ -1,49 +1,17 @@
 /* header.css - Header moderno y premium para Mueblería */
 
-/* Barra de navegación */
+/* Barra de navegación - Estilo Homelegance con color */
 .header {
-  background: linear-gradient(135deg, #5B4636 0%, #6B5544 50%, #5B4636 100%);
+  background: linear-gradient(135deg, #2C2C2C 0%, #1a1a1a 100%);
   color: #FFFFFF;
-  box-shadow: 
-    0 4px 20px rgba(91, 70, 54, 0.4),
-    0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
   position: relative;
   z-index: 1000;
   overflow: visible;
+  border-bottom: 3px solid #333333;
 }
 
-/* Patrón decorativo de fondo */
-.header::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: 
-    radial-gradient(circle at 20% 30%, rgba(212, 165, 116, 0.15) 0%, transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(212, 165, 116, 0.1) 0%, transparent 50%),
-    linear-gradient(180deg, transparent 0%, rgba(255, 255, 255, 0.03) 50%, transparent 100%);
-  pointer-events: none;
-  z-index: 0;
-}
-
-/* Línea decorativa inferior */
-.header::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, 
-    transparent 0%, 
-    #D4A574 20%, 
-    #E8D5B7 50%, 
-    #D4A574 80%, 
-    transparent 100%);
-  z-index: 1;
-}
+/* Sin decoraciones - diseño limpio */
 
 /* Contenedor principal */
 .header-container {
@@ -159,33 +127,34 @@
   color: #FFFFFF;
   text-decoration: none;
   transition: all 0.3s ease;
-  font-weight: 500;
+  font-weight: 600;
   padding: 0.5rem 1rem;
-  border-radius: 0.5rem;
+  border-radius: 0;
   position: relative;
   display: inline-block;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
 }
 
 .menu li a::before {
   content: '';
   position: absolute;
   bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
+  left: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, #D4A574, #E8D5B7);
+  background: #FFFFFF;
   transition: width 0.3s ease;
-  border-radius: 2px;
 }
 
 .menu li a:hover {
-  color: #D4A574;
-  background: rgba(122, 143, 90, 0.1);
+  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .menu li a:hover::before {
-  width: 80%;
+  width: 100%;
 }
 
 /* Selector de idioma Desktop */
@@ -207,10 +176,10 @@
 }
 
 .language-button {
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  background: rgba(255, 255, 255, 0.1);
   color: #FFFFFF;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 0.5rem;
+  border-radius: 0;
   padding: 0.5rem 0.75rem;
   cursor: pointer;
   display: flex;
@@ -218,15 +187,12 @@
   gap: 0.5rem;
   transition: all 0.3s ease;
   font-size: 0.9rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(10px);
+  font-weight: 600;
 }
 
 .language-button:hover {
-  background: linear-gradient(135deg, rgba(212, 165, 116, 0.3), rgba(212, 165, 116, 0.2));
-  border-color: #D4A574;
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(212, 165, 116, 0.3);
+  background: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 .flag-icon {
@@ -250,12 +216,10 @@
   position: absolute;
   top: calc(100% + 0.5rem);
   right: 0;
-  background: linear-gradient(135deg, #5B4636, #6B5544);
-  border: 1px solid rgba(212, 165, 116, 0.3);
-  border-radius: 0.5rem;
-  box-shadow: 
-    0 8px 24px rgba(0, 0, 0, 0.4),
-    0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+  background: #FFFFFF;
+  border: 1px solid #E0E0E0;
+  border-radius: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   z-index: 10000;
   min-width: 150px;
   overflow: hidden;
@@ -283,7 +247,7 @@
   padding: 0.75rem 1rem;
   cursor: pointer;
   transition: all 0.3s ease;
-  color: #FFFFFF;
+  color: #333333;
   position: relative;
 }
 
@@ -294,12 +258,12 @@
   top: 0;
   bottom: 0;
   width: 0;
-  background: linear-gradient(90deg, #D4A574, transparent);
+  background: #1a1a1a;
   transition: width 0.3s ease;
 }
 
 .language-option:hover {
-  background-color: rgba(212, 165, 116, 0.3);
+  background-color: #F5F5F5;
   padding-left: 1.25rem;
 }
 
@@ -308,12 +272,13 @@
 }
 
 .language-option.active {
-  background-color: rgba(212, 165, 116, 0.2);
+  background-color: #F5F5F5;
+  font-weight: 600;
 }
 
 .check-mark {
   margin-left: auto;
-  color: #D4A574;
+  color: #1a1a1a;
   font-weight: bold;
   font-size: 1rem;
 }
@@ -325,11 +290,9 @@
   top: 100%;
   left: 0;
   right: 0;
-  background: linear-gradient(180deg, #5B4636 0%, #6B5544 100%);
-  border-top: 2px solid rgba(122, 143, 90, 0.3);
-  box-shadow: 
-    0 8px 24px rgba(0, 0, 0, 0.4),
-    0 0 0 1px rgba(255, 255, 255, 0.05) inset;
+  background: linear-gradient(135deg, #2C2C2C 0%, #1a1a1a 100%);
+  border-top: 3px solid #333333;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
   z-index: 999;
   animation: slideDown 0.3s ease-out;
 }
@@ -358,8 +321,11 @@
   text-decoration: none;
   padding: 1rem 2rem;
   transition: all 0.3s ease;
-  font-weight: 500;
+  font-weight: 600;
   position: relative;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 0.5px;
 }
 
 .mobile-menu li a::before {
@@ -369,13 +335,13 @@
   top: 0;
   bottom: 0;
   width: 0;
-  background: linear-gradient(90deg, #D4A574, transparent);
+  background: #FFFFFF;
   transition: width 0.3s ease;
 }
 
 .mobile-menu li a:hover {
-  background-color: rgba(212, 165, 116, 0.2);
-  color: #D4A574;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #FFFFFF;
   padding-left: 2.5rem;
 }
 
@@ -406,7 +372,7 @@
   background-color: rgba(255, 255, 255, 0.1);
   color: #FFFFFF;
   border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 0.375rem;
+  border-radius: 0;
   padding: 0.5rem 0.75rem;
   cursor: pointer;
   display: flex;
@@ -416,6 +382,7 @@
   font-size: 0.9rem;
   flex: 1;
   justify-content: center;
+  font-weight: 600;
 }
 
 .language-option-mobile:hover {
@@ -423,8 +390,9 @@
 }
 
 .language-option-mobile.active {
-  background-color: #7A8F5A;
-  border-color: #D4A574;
+  background-color: rgba(255, 255, 255, 0.3);
+  color: #FFFFFF;
+  border-color: rgba(255, 255, 255, 0.4);
 }
 
 /* Responsive Design */

@@ -1,59 +1,28 @@
 /* home.css - Estilos modernos y premium para Mueblería */
 
-/* Sección principal */
+/* Sección principal - Estilo Homelegance */
 .home-section {
   max-width: 1400px;
   margin: 0 auto;
   padding: 3rem 2rem;
-  color: #2E2E2E;
-  font-family: 'Inter', sans-serif;
-  background: linear-gradient(180deg, #F5F1EB 0%, #FFFFFF 50%, #F5F1EB 100%);
+  color: #333333;
+  font-family: 'Arial', 'Helvetica', sans-serif;
+  background: #FFFFFF;
   min-height: calc(100vh - 200px);
   position: relative;
   overflow-x: hidden;
 }
 
-/* Patrón de fondo sutil mejorado */
-.home-section::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: 
-    radial-gradient(circle at 15% 30%, rgba(122, 143, 90, 0.05) 0%, transparent 60%),
-    radial-gradient(circle at 85% 70%, rgba(91, 70, 54, 0.05) 0%, transparent 60%),
-    linear-gradient(180deg, transparent 0%, rgba(122, 143, 90, 0.02) 50%, transparent 100%);
-  pointer-events: none;
-  z-index: 0;
-  animation: backgroundShift 20s ease-in-out infinite;
-}
+/* Sin fondo decorativo - diseño limpio */
 
-@keyframes backgroundShift {
-  0%, 100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.8;
-  }
-}
-
-.home-section > * {
-  position: relative;
-  z-index: 1;
-}
-
-/* Bienvenida moderna mejorada */
+/* Bienvenida profesional */
 .welcome-modern {
-  background: linear-gradient(135deg, #5B4636 0%, #6B5544 50%, #5B4636 100%);
+  background: #1a1a1a;
   padding: 4rem 3rem;
   text-align: center;
-  border-radius: 2rem;
+  border-radius: 0;
   margin-bottom: 4rem;
-  box-shadow: 
-    0 20px 60px rgba(91, 70, 54, 0.25),
-    0 0 0 1px rgba(255, 255, 255, 0.1) inset;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   position: relative;
   overflow: hidden;
   animation: fadeInUp 0.8s ease-out;
@@ -70,17 +39,7 @@
   }
 }
 
-.welcome-modern::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  right: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
-  pointer-events: none;
-  animation: rotate 20s linear infinite;
-}
+/* Sin decoraciones - diseño limpio */
 
 @keyframes rotate {
   from {
@@ -91,39 +50,25 @@
   }
 }
 
-.welcome-modern::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, transparent, #7A8F5A, transparent);
-  opacity: 0.6;
-}
-
 .welcome-modern h1 {
-  font-size: 3.2rem;
+  font-size: 3rem;
   font-weight: 700;
   color: #FFFFFF;
-  margin-bottom: 1.5rem;
-  text-shadow: 
-    2px 2px 4px rgba(0, 0, 0, 0.4),
-    0 0 20px rgba(122, 143, 90, 0.3);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
   position: relative;
   z-index: 1;
-  letter-spacing: -0.02em;
 }
 
 .welcome-modern p {
-  font-size: 1.3rem;
-  color: #F5F1EB;
-  line-height: 1.9;
+  font-size: 1.2rem;
+  color: #CCCCCC;
+  line-height: 1.6;
   max-width: 750px;
   margin: 0 auto;
   position: relative;
   z-index: 1;
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 /* Grid de imágenes (3 por fila) */
