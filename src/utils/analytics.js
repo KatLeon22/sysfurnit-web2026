@@ -13,6 +13,7 @@ export const initGA = () => {
     // Configurar gtag
     window.dataLayer = window.dataLayer || [];
     function gtag() {
+      // eslint-disable-next-line prefer-rest-params
       window.dataLayer.push(arguments);
     }
     window.gtag = gtag;
